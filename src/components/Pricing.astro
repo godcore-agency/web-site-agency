@@ -1,54 +1,122 @@
 ---
 const plans = [
   {
-    name: 'Starter',
-    price: '$1,200',
-    period: '/mo',
-    description: 'Perfecto para marcas que comienzan su presencia digital.',
+    name: "SaaS",
+    price: "$1'350.000",
+    currency: "COP",
+    description:
+      "Ideal para emprendedores y negocios que inician su presencia digital.",
     featured: false,
     features: [
-      'Brand audit completo',
-      'Social media (2 plataformas)',
-      'Calendario editorial mensual',
-      'Reporte mensual de rendimiento',
-      'Soporte por email',
+      "10 publicaciones al mes",
+      "3 reels al mes",
+      "Manejo de 1 red social",
+      "Respuesta básica mensajería (precios, horarios, ubicación, servicios)",
+      "Diseño básico",
+      "Reporte mensual simple",
+      "Landing page básico",
+      "Diseño página web (UI/UX)",
+      "Conexión redes sociales",
+      "SEO básico",
     ],
-    cta: 'Empezar ahora',
+    cta: "Empezar ahora",
   },
   {
-    name: 'Growth',
-    price: '$2,800',
-    period: '/mo',
-    description: 'Para marcas listas para escalar con estrategia integral.',
+    name: "Profesional",
+    price: "$2'850.000",
+    currency: "COP",
+    description:
+      "Para marcas que buscan escalar con estrategia y presencia sólida.",
+    featured: false,
+    features: [
+      "Manejo de 2 redes mensual",
+      "12 publicaciones al mes",
+      "5 reels al mes",
+      "Gestión de pauta (Meta Ads)",
+      "Copywriting (Copys básicos)",
+      "Reporte mensual mediano",
+      "Respuesta mensajería",
+      "Diseño gráfico simple",
+      "Optimizaciones de software",
+      "Diseño página web (UI/UX)",
+      "Integración redes sociales (mensajes predefinidos)",
+      "Análisis de posibles automatizaciones",
+    ],
+    cta: "Elegir Profesional",
+  },
+  {
+    name: "Elite",
+    price: "$5'350.000",
+    currency: "COP",
+    description:
+      "Para empresas que necesitan resultados agresivos y automatización.",
     featured: true,
-    badge: 'Más Popular',
+    badge: "Más Popular",
     features: [
-      'Estrategia completa de marketing',
-      'Social media (4 plataformas)',
-      'Gestión de Paid Ads (Meta + Google)',
-      'Contenido premium (foto + video)',
-      'Llamadas bi-semanales',
-      'Dashboard en tiempo real',
-      'Optimización SEO mensual',
+      "Manejo de 3 redes mensual",
+      "18 publicaciones al mes",
+      "8 reels al mes",
+      "Gestión de pauta (Meta Ads, Google Ads)",
+      "Copywriting (Copys avanzado)",
+      "Reporte mensual completo",
+      "Respuesta mensajería",
+      "Diseño gráfico avanzado",
+      "Desarrollo sistemas web automatizados",
+      "Diseño página web (UI/UX)",
+      "Integración redes sociales",
+      "Chatbot IA",
+      "SEO avanzado",
+      "Análisis, automatizaciones y flujos de trabajo",
+      "Integraciones de Inteligencia Artificial",
     ],
-    cta: 'Elegir Growth',
+    cta: "Elegir Elite",
   },
   {
-    name: 'Scale',
-    price: 'Custom',
-    period: '',
-    description: 'Para empresas que necesitan un equipo dedicado completo.',
+    name: "GODCORE",
+    price: "$8'100.000",
+    currency: "COP",
+    description: "El servicio más completo. Todo incluido, sin límites.",
+    featured: false,
+    badge: "Premium",
+    features: [
+      "Manejo de todas las redes mensual",
+      "24 publicaciones al mes",
+      "12 reels al mes",
+      "Gestión de pauta (Meta Ads, Google Ads)",
+      "Copywriting (Copys, Storytelling)",
+      "Reporte mensual completo",
+      "Respuesta mensajería",
+      "Diseño gráfico con línea visual",
+      "Desarrollos trimestrales a la medida (E Commerce, Pasarela pagos, sistemas, etc)",
+      "Desarrollo panel administrativo marketing",
+      "Integraciones de Inteligencia Artificial",
+    ],
+    cta: "Elegir GODCORE",
+  },
+  {
+    name: "Personalizado",
+    price: "A medida",
+    currency: "",
+    description:
+      "Diseñamos un plan 100% adaptado a las necesidades de tu negocio.",
     featured: false,
     features: [
-      'Equipo dedicado asignado',
-      'Estrategia omnicanal completa',
-      'White-glove service',
-      'Reporting avanzado y BI',
-      'Llamadas semanales + Slack',
-      'Producción audiovisual',
-      'Consultoría estratégica C-level',
+      "Manejo de redes según necesidades",
+      "Publicaciones y reels definidas por el cliente",
+      "Gestión de pauta (Meta Ads, Google Ads) opcional",
+      "Copywriting (Copys o Storytelling)",
+      "Reporte mensual (Básico o Avanzado)",
+      "Respuesta mensajería (Básica o Avanzada)",
+      "Diseño gráfico (Básico, Avanzado o Con línea visual)",
+      "Desarrollo de sistemas personalizados",
+      "Desarrollo panel administrativo según requerimientos",
+      "Integración redes sociales",
+      "Chatbot IA personalizados",
+      "SEO avanzado",
+      "Análisis, automatizaciones y flujos personalizados",
+      "Integraciones de IA a la medida",
     ],
-    cta: 'Hablar con ventas',
+    cta: "Hablar con ventas",
   },
 ];
 ---
@@ -57,41 +125,62 @@ const plans = [
   <div class="container">
     <div class="pricing-header animate-on-scroll">
       <span class="section-label">Planes</span>
-      <h2 class="section-title">Inversión transparente,<br />resultados medibles.</h2>
-      <p class="section-subtitle">Elige el plan que mejor se adapte a tu etapa de crecimiento.</p>
+      <h2 class="section-title">
+        Inversión transparente,<br />resultados medibles.
+      </h2>
+      <p class="section-subtitle">
+        Elige el plan que mejor se adapte a tu etapa de crecimiento.
+      </p>
     </div>
 
     <div class="pricing-grid">
-      {plans.map((plan, i) => (
-        <div class={`glass-card pricing-card ${plan.featured ? 'featured' : ''} animate-on-scroll delay-${i + 1}`}>
-          {plan.badge && (
-            <div class="pricing-badge">{plan.badge}</div>
-          )}
-          <div class="pricing-card-header">
-            <h3 class="plan-name">{plan.name}</h3>
-            <div class="plan-price">
-              <span class="price">{plan.price}</span>
-              {plan.period && <span class="period">{plan.period}</span>}
+      {
+        plans.map((plan, i) => (
+          <div
+            class={`glass-card pricing-card ${plan.featured ? "featured" : ""} ${plan.name === "GODCORE" ? "godcore" : ""} animate-on-scroll delay-${(i % 3) + 1}`}
+          >
+            {plan.badge && (
+              <div
+                class={`pricing-badge ${plan.name === "GODCORE" ? "badge-godcore" : ""}`}
+              >
+                {plan.badge}
+              </div>
+            )}
+            <div class="pricing-card-header">
+              <h3 class="plan-name">{plan.name}</h3>
+              <div class="plan-price">
+                <span class="price">{plan.price}</span>
+                {plan.currency && <span class="currency">{plan.currency}</span>}
+              </div>
+              <p class="plan-desc">{plan.description}</p>
             </div>
-            <p class="plan-desc">{plan.description}</p>
+
+            <ul class="plan-features">
+              {plan.features.map((feature) => (
+                <li class="plan-feature">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M3.5 8.5L6.5 11.5L12.5 4.5"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href="#contacto"
+              class={`btn ${plan.featured ? "btn-primary" : plan.name === "GODCORE" ? "btn-godcore" : "btn-ghost"} pricing-cta`}
+            >
+              {plan.cta}
+            </a>
           </div>
-
-          <ul class="plan-features">
-            {plan.features.map((feature) => (
-              <li class="plan-feature">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                {feature}
-              </li>
-            ))}
-          </ul>
-
-          <a href="#contacto" class={`btn ${plan.featured ? 'btn-primary' : 'btn-ghost'} pricing-cta`}>
-            {plan.cta}
-          </a>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
@@ -112,8 +201,14 @@ const plans = [
     align-items: start;
   }
 
+  /* Make the last two cards center on a new row */
+  .pricing-card:nth-child(4),
+  .pricing-card:nth-child(5) {
+    /* handled by the grid wrapper below */
+  }
+
   .pricing-card {
-    padding: 40px 32px;
+    padding: 36px 28px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -122,18 +217,45 @@ const plans = [
 
   .pricing-card.featured {
     border-color: rgba(var(--color-accent-rgb), 0.3);
-    box-shadow: 0 0 60px rgba(var(--color-accent-rgb), 0.1),
-                inset 0 1px 0 rgba(var(--color-accent-rgb), 0.2);
+    box-shadow:
+      0 0 60px rgba(var(--color-accent-rgb), 0.1),
+      inset 0 1px 0 rgba(var(--color-accent-rgb), 0.2);
   }
 
   .pricing-card.featured::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-accent),
+      transparent
+    );
+  }
+
+  .pricing-card.godcore {
+    border-color: rgba(var(--color-accent-rgb), 0.15);
+    background: rgba(var(--color-accent-rgb), 0.03);
+  }
+
+  .pricing-card.godcore::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-accent),
+      transparent
+    );
+    opacity: 0.6;
   }
 
   .pricing-badge {
@@ -150,8 +272,12 @@ const plans = [
     letter-spacing: 1px;
   }
 
+  .badge-godcore {
+    background: linear-gradient(135deg, var(--color-accent), #ff9f29);
+  }
+
   .pricing-card-header {
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
   .plan-name {
@@ -160,25 +286,33 @@ const plans = [
     color: var(--color-gray);
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
+  }
+
+  .pricing-card.godcore .plan-name {
+    color: var(--color-accent);
+    font-weight: 600;
   }
 
   .plan-price {
     display: flex;
     align-items: baseline;
-    gap: 4px;
-    margin-bottom: 12px;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
   }
 
   .price {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
     font-weight: 700;
     color: var(--color-heading);
+    line-height: 1.2;
   }
 
-  .period {
-    font-size: var(--font-size-base);
+  .currency {
+    font-size: var(--font-size-sm);
     color: var(--color-gray);
+    font-weight: 400;
   }
 
   .plan-desc {
@@ -190,22 +324,24 @@ const plans = [
   .plan-features {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    margin-bottom: 36px;
+    gap: 12px;
+    margin-bottom: 32px;
     flex: 1;
   }
 
   .plan-feature {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     color: var(--color-body);
+    line-height: 1.5;
   }
 
   .plan-feature svg {
     color: var(--color-accent);
     flex-shrink: 0;
+    margin-top: 2px;
   }
 
   .pricing-cta {
@@ -214,7 +350,80 @@ const plans = [
     margin-top: auto;
   }
 
-  @media (max-width: 1024px) {
+  .btn-godcore {
+    background: transparent;
+    color: var(--color-accent);
+    border: 1px solid rgba(var(--color-accent-rgb), 0.4);
+  }
+
+  .btn-godcore:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(var(--color-accent-rgb), 0.35);
+  }
+
+  @media (min-width: 1025px) {
+    .pricing-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Center the last 2 cards */
+    .pricing-card:nth-child(4) {
+      grid-column: 1 / 2;
+      margin-left: auto;
+      margin-right: 0;
+      max-width: calc(100% - 10px);
+    }
+
+    .pricing-card:nth-child(5) {
+      grid-column: 2 / 3;
+      margin-left: 0;
+      margin-right: auto;
+      max-width: calc(100% - 10px);
+    }
+
+    /* Shift last row to center by using a 5-col trick */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+    }
+
+    .pricing-card:nth-child(1) {
+      grid-column: 1 / 3;
+    }
+    .pricing-card:nth-child(2) {
+      grid-column: 3 / 5;
+    }
+    .pricing-card:nth-child(3) {
+      grid-column: 5 / 7;
+    }
+    .pricing-card:nth-child(4) {
+      grid-column: 2 / 4;
+      max-width: 100%;
+      margin: 0;
+    }
+    .pricing-card:nth-child(5) {
+      grid-column: 4 / 6;
+      max-width: 100%;
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 1024px) and (min-width: 641px) {
+    .pricing-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pricing-card:nth-child(5) {
+      grid-column: 1 / -1;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 640px) {
     .pricing-grid {
       grid-template-columns: 1fr;
       max-width: 480px;
