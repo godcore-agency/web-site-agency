@@ -1,24 +1,31 @@
 ---
 const navLinks = [
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Proceso', href: '#proceso' },
-  { label: 'Planes', href: '#planes' },
-  { label: 'Resultados', href: '#resultados' },
-  { label: 'FAQ', href: '#faq' },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Proceso", href: "#proceso" },
+  { label: "Planes", href: "#planes" },
+  { label: "Resultados", href: "#resultados" },
+  { label: "FAQ", href: "#faq" },
 ];
 ---
 
 <nav class="navbar" id="navbar">
   <div class="nav-container container">
     <a href="#" class="nav-logo">
-      <span class="logo-text">GODCORE AGENCY</span>
-      <span class="logo-dot">.</span>
+      <img src="/GODCORE.png" alt="Logo" class="logo-img" />
+      <!-- <span class="logo-text">GODCORE AGENCY</span> -->
+      <!-- <span class="logo-dot">.</span> -->
     </a>
 
     <ul class="nav-links" id="nav-links">
-      {navLinks.map((link) => (
-        <li><a href={link.href} class="nav-link">{link.label}</a></li>
-      ))}
+      {
+        navLinks.map((link) => (
+          <li>
+            <a href={link.href} class="nav-link">
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
 
     <a href="#contacto" class="btn btn-primary nav-cta">Contactar</a>
@@ -32,31 +39,31 @@ const navLinks = [
 </nav>
 
 <script>
-  const toggle = document.getElementById('nav-toggle');
-  const links = document.getElementById('nav-links');
-  const navbar = document.getElementById('navbar');
+  const toggle = document.getElementById("nav-toggle");
+  const links = document.getElementById("nav-links");
+  const navbar = document.getElementById("navbar");
 
-  toggle?.addEventListener('click', () => {
-    links?.classList.toggle('open');
-    toggle.classList.toggle('active');
+  toggle?.addEventListener("click", () => {
+    links?.classList.toggle("open");
+    toggle.classList.toggle("active");
   });
 
   // Close mobile menu on link click
-  links?.querySelectorAll('a').forEach((a) => {
-    a.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle?.classList.remove('active');
+  links?.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => {
+      links.classList.remove("open");
+      toggle?.classList.remove("active");
     });
   });
 
   // Navbar scroll effect
   let lastScroll = 0;
-  window.addEventListener('scroll', () => {
+  window.addEventListener("scroll", () => {
     const currentScroll = window.scrollY;
     if (currentScroll > 80) {
-      navbar?.classList.add('scrolled');
+      navbar?.classList.add("scrolled");
     } else {
-      navbar?.classList.remove('scrolled');
+      navbar?.classList.remove("scrolled");
     }
     lastScroll = currentScroll;
   });
@@ -90,7 +97,6 @@ const navLinks = [
   .nav-logo {
     display: flex;
     align-items: center;
-    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.5px;
     z-index: 10;
@@ -98,6 +104,11 @@ const navLinks = [
 
   .logo-text {
     color: var(--color-heading);
+  }
+
+  .logo-img {
+    width: 200px;
+    height: auto;
   }
 
   .logo-dot {
