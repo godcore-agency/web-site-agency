@@ -1,0 +1,224 @@
+---
+const plans = [
+  {
+    name: 'Starter',
+    price: '$1,200',
+    period: '/mo',
+    description: 'Perfecto para marcas que comienzan su presencia digital.',
+    featured: false,
+    features: [
+      'Brand audit completo',
+      'Social media (2 plataformas)',
+      'Calendario editorial mensual',
+      'Reporte mensual de rendimiento',
+      'Soporte por email',
+    ],
+    cta: 'Empezar ahora',
+  },
+  {
+    name: 'Growth',
+    price: '$2,800',
+    period: '/mo',
+    description: 'Para marcas listas para escalar con estrategia integral.',
+    featured: true,
+    badge: 'Más Popular',
+    features: [
+      'Estrategia completa de marketing',
+      'Social media (4 plataformas)',
+      'Gestión de Paid Ads (Meta + Google)',
+      'Contenido premium (foto + video)',
+      'Llamadas bi-semanales',
+      'Dashboard en tiempo real',
+      'Optimización SEO mensual',
+    ],
+    cta: 'Elegir Growth',
+  },
+  {
+    name: 'Scale',
+    price: 'Custom',
+    period: '',
+    description: 'Para empresas que necesitan un equipo dedicado completo.',
+    featured: false,
+    features: [
+      'Equipo dedicado asignado',
+      'Estrategia omnicanal completa',
+      'White-glove service',
+      'Reporting avanzado y BI',
+      'Llamadas semanales + Slack',
+      'Producción audiovisual',
+      'Consultoría estratégica C-level',
+    ],
+    cta: 'Hablar con ventas',
+  },
+];
+---
+
+<section class="pricing" id="planes">
+  <div class="container">
+    <div class="pricing-header animate-on-scroll">
+      <span class="section-label">Planes</span>
+      <h2 class="section-title">Inversión transparente,<br />resultados medibles.</h2>
+      <p class="section-subtitle">Elige el plan que mejor se adapte a tu etapa de crecimiento.</p>
+    </div>
+
+    <div class="pricing-grid">
+      {plans.map((plan, i) => (
+        <div class={`glass-card pricing-card ${plan.featured ? 'featured' : ''} animate-on-scroll delay-${i + 1}`}>
+          {plan.badge && (
+            <div class="pricing-badge">{plan.badge}</div>
+          )}
+          <div class="pricing-card-header">
+            <h3 class="plan-name">{plan.name}</h3>
+            <div class="plan-price">
+              <span class="price">{plan.price}</span>
+              {plan.period && <span class="period">{plan.period}</span>}
+            </div>
+            <p class="plan-desc">{plan.description}</p>
+          </div>
+
+          <ul class="plan-features">
+            {plan.features.map((feature) => (
+              <li class="plan-feature">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          <a href="#contacto" class={`btn ${plan.featured ? 'btn-primary' : 'btn-ghost'} pricing-cta`}>
+            {plan.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing {
+    padding: var(--section-padding) 0;
+  }
+
+  .pricing-header {
+    margin-bottom: 64px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  .pricing-card {
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing-card.featured {
+    border-color: rgba(var(--color-accent-rgb), 0.3);
+    box-shadow: 0 0 60px rgba(var(--color-accent-rgb), 0.1),
+                inset 0 1px 0 rgba(var(--color-accent-rgb), 0.2);
+  }
+
+  .pricing-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent);
+    color: var(--color-white);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .pricing-card-header {
+    margin-bottom: 32px;
+  }
+
+  .plan-name {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .plan-price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+
+  .price {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-heading);
+  }
+
+  .period {
+    font-size: var(--font-size-base);
+    color: var(--color-gray);
+  }
+
+  .plan-desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-body);
+    line-height: 1.6;
+  }
+
+  .plan-features {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 36px;
+    flex: 1;
+  }
+
+  .plan-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--font-size-sm);
+    color: var(--color-body);
+  }
+
+  .plan-feature svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .pricing-cta {
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+  }
+
+  @media (max-width: 1024px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+</style>

@@ -1,0 +1,178 @@
+---
+const faqs = [
+  {
+    question: '¿Cuánto tiempo toma ver resultados?',
+    answer: 'Dependiendo del canal, los primeros resultados en paid ads se ven en 2-4 semanas. Para SEO y estrategias orgánicas, el impacto significativo se nota entre 3-6 meses. Desde el día uno recibes reportes de avance.',
+  },
+  {
+    question: '¿Hay un compromiso mínimo de contrato?',
+    answer: 'Trabajamos con contratos mínimos de 3 meses para poder implementar, medir y optimizar adecuadamente. Después del periodo inicial, el servicio es mes a mes con 30 días de aviso.',
+  },
+  {
+    question: '¿Cómo es el proceso de onboarding?',
+    answer: 'El onboarding dura entre 5-7 días hábiles. Incluye kickoff call, acceso a cuentas, auditoría inicial, definición de KPIs y presentación de la estrategia propuesta. Te asignamos un account manager dedicado.',
+  },
+  {
+    question: '¿Qué plataformas manejan para paid ads?',
+    answer: 'Gestionamos campañas en Meta Ads (Facebook e Instagram), Google Ads (Search, Display, YouTube), TikTok Ads y LinkedIn Ads. Seleccionamos las plataformas según tu audiencia y objetivos.',
+  },
+  {
+    question: '¿Puedo cambiar de plan en cualquier momento?',
+    answer: 'Sí, puedes hacer upgrade o downgrade de tu plan al inicio de cualquier ciclo de facturación. Los cambios se aplican desde el siguiente periodo.',
+  },
+  {
+    question: '¿Ofrecen reportes y transparencia en los resultados?',
+    answer: 'Absolutamente. Todos los planes incluyen reportes detallados con métricas clave. En el plan Growth y Scale tienes acceso a un dashboard en tiempo real y calls periódicas de revisión.',
+  },
+];
+---
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-header animate-on-scroll">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">Preguntas frecuentes.</h2>
+      <p class="section-subtitle">Resolvemos tus dudas antes de empezar.</p>
+    </div>
+
+    <div class="faq-list">
+      {faqs.map((faq, i) => (
+        <div class={`faq-item animate-on-scroll delay-${(i % 3) + 1}`} data-faq>
+          <button class="faq-question" aria-expanded="false">
+            <span>{faq.question}</span>
+            <div class="faq-icon">
+              <span class="icon-line icon-h"></span>
+              <span class="icon-line icon-v"></span>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-faq] .faq-question').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('[data-faq]');
+      const isOpen = item?.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('[data-faq]').forEach((el) => {
+        el.classList.remove('open');
+        el.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle clicked
+      if (!isOpen) {
+        item?.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq {
+    padding: var(--section-padding) 0;
+  }
+
+  .faq-header {
+    margin-bottom: 64px;
+  }
+
+  .faq-list {
+    max-width: 800px;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 28px 0;
+    text-align: left;
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--color-heading);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+  }
+
+  .faq-question:hover {
+    color: var(--color-accent);
+  }
+
+  .faq-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .icon-line {
+    position: absolute;
+    background: var(--color-gray);
+    transition: all var(--transition-base);
+  }
+
+  .icon-h {
+    top: 50%;
+    left: 2px;
+    right: 2px;
+    height: 1.5px;
+    transform: translateY(-50%);
+  }
+
+  .icon-v {
+    left: 50%;
+    top: 2px;
+    bottom: 2px;
+    width: 1.5px;
+    transform: translateX(-50%);
+  }
+
+  .faq-item.open .icon-v {
+    transform: translateX(-50%) rotate(90deg);
+    opacity: 0;
+  }
+
+  .faq-item.open .icon-h {
+    background: var(--color-accent);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 0 0;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+    padding: 0 0 28px;
+  }
+
+  .faq-answer p {
+    font-size: var(--font-size-base);
+    color: var(--color-body);
+    line-height: 1.7;
+    max-width: 640px;
+  }
+
+  @media (max-width: 768px) {
+    .faq-question {
+      font-size: var(--font-size-base);
+      padding: 24px 0;
+    }
+  }
+</style>

@@ -1,0 +1,101 @@
+---
+const stats = [
+  { value: '+340%', label: 'Avg. ROAS' },
+  { value: '50+', label: 'Brands Scaled' },
+  { value: '$12M+', label: 'Managed Ad Spend' },
+  { value: '4.9★', label: 'Client Satisfaction' },
+];
+---
+
+<section class="stats orange-glow" id="resultados">
+  <div class="container">
+    <div class="stats-header animate-on-scroll">
+      <span class="section-label">Resultados</span>
+      <h2 class="section-title">Los números hablan.</h2>
+    </div>
+
+    <div class="stats-grid">
+      {stats.map((stat, i) => (
+        <div class={`stat-item animate-on-scroll delay-${i + 1}`}>
+          <span class="stat-value">{stat.value}</span>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats {
+    padding: var(--section-padding) 0;
+    position: relative;
+  }
+
+  .stats-header {
+    margin-bottom: 64px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+  }
+
+  .stat-item::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .stat-item:last-child::after {
+    display: none;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 400;
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .stat-item::after {
+      display: none;
+    }
+
+    .stat-item {
+      padding: 24px 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

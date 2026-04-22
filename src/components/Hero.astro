@@ -1,0 +1,218 @@
+---
+---
+
+<section class="hero orange-glow" id="hero">
+  <div class="hero-bg">
+    <div class="hero-glow"></div>
+    <div class="hero-glow-secondary"></div>
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-badge animate-on-scroll">
+      <span class="badge-dot"></span>
+      Product Design Agency
+    </div>
+
+    <h1 class="hero-title animate-on-scroll delay-1">
+      We build brands<br />that move <span class="accent">markets.</span>
+    </h1>
+
+    <p class="hero-subtitle animate-on-scroll delay-2">
+      Digital strategy, content, paid media & brand identity<br class="hide-mobile" />
+      for ambitious companies.
+    </p>
+
+    <div class="hero-ctas animate-on-scroll delay-3">
+      <a href="#planes" class="btn btn-primary btn-lg">
+        Ver Planes
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3.33 8h9.34M8.67 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="#contacto" class="btn btn-ghost btn-lg">Hablar con un experto</a>
+    </div>
+
+    <div class="hero-scroll-indicator animate-on-scroll delay-4">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 100px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-glow {
+    position: absolute;
+    bottom: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(
+      circle,
+      rgba(var(--color-accent-rgb), 0.12) 0%,
+      rgba(69, 48, 39, 0.06) 35%,
+      transparent 65%
+    );
+    pointer-events: none;
+    animation: pulse-glow 6s ease-in-out infinite;
+  }
+
+  .hero-glow-secondary {
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+      circle,
+      rgba(var(--color-accent-rgb), 0.08) 0%,
+      transparent 60%
+    );
+    pointer-events: none;
+    animation: pulse-glow 4s ease-in-out infinite 1.5s;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: var(--font-size-xs);
+    color: var(--color-gray);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .hero-title {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: -2px;
+    line-height: 1.05;
+    max-width: 900px;
+  }
+
+  .hero-title .accent {
+    color: var(--color-accent);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+  }
+
+  .btn-lg {
+    padding: 16px 36px;
+    font-size: var(--font-size-base);
+  }
+
+  .hero-scroll-indicator {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, var(--color-gray));
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+
+  .hero-scroll-indicator span {
+    font-size: 0.7rem;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  .hide-mobile {
+    display: inline;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding-top: 80px;
+      min-height: 100svh;
+    }
+
+    .hero-title {
+      letter-spacing: -1px;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .hero-ctas .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hide-mobile {
+      display: none;
+    }
+
+    .hero-scroll-indicator {
+      display: none;
+    }
+  }
+</style>

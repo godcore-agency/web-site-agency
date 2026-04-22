@@ -1,0 +1,139 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Discovery',
+    description: 'Analizamos tu marca, competencia y mercado. Entendemos tus objetivos y definimos KPIs claros para medir el éxito.',
+  },
+  {
+    number: '02',
+    title: 'Strategy',
+    description: 'Diseñamos una estrategia personalizada con canales, mensajes y tácticas específicas para tu negocio.',
+  },
+  {
+    number: '03',
+    title: 'Execution',
+    description: 'Implementamos con excelencia: creativos, campañas, contenido y optimización continua basada en datos.',
+  },
+  {
+    number: '04',
+    title: 'Results',
+    description: 'Reporting transparente y análisis profundo. Iteramos y escalamos lo que funciona para maximizar el ROI.',
+  },
+];
+---
+
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="process-header animate-on-scroll">
+      <span class="section-label">Proceso</span>
+      <h2 class="section-title">Cómo trabajamos.</h2>
+      <p class="section-subtitle">Un proceso probado que convierte inversión en crecimiento medible.</p>
+    </div>
+
+    <div class="process-steps">
+      {steps.map((step, i) => (
+        <div class={`process-step animate-on-scroll delay-${i + 1}`}>
+          <div class="step-number">{step.number}</div>
+          <div class="step-content">
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-desc">{step.description}</p>
+          </div>
+          {i < steps.length - 1 && <div class="step-connector"></div>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process {
+    padding: var(--section-padding) 0;
+    position: relative;
+  }
+
+  .process-header {
+    margin-bottom: 80px;
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .process-step {
+    position: relative;
+    padding: 0 24px;
+  }
+
+  .step-number {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 24px;
+    opacity: 0.8;
+  }
+
+  .step-content {
+    position: relative;
+  }
+
+  .step-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-heading);
+    margin-bottom: 12px;
+  }
+
+  .step-desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-body);
+    line-height: 1.7;
+  }
+
+  .step-connector {
+    position: absolute;
+    top: 48px;
+    right: -2px;
+    width: 1px;
+    height: 60%;
+    background: linear-gradient(
+      to bottom,
+      rgba(var(--color-accent-rgb), 0.3),
+      transparent
+    );
+  }
+
+  @media (max-width: 1024px) {
+    .process-steps {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .step-connector {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .process-steps {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .process-step {
+      padding: 0;
+      display: flex;
+      gap: 24px;
+    }
+
+    .step-number {
+      font-size: var(--font-size-2xl);
+      margin-bottom: 0;
+      min-width: 80px;
+    }
+  }
+</style>

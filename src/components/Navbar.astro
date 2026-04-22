@@ -1,0 +1,193 @@
+---
+const navLinks = [
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Proceso', href: '#proceso' },
+  { label: 'Planes', href: '#planes' },
+  { label: 'Resultados', href: '#resultados' },
+  { label: 'FAQ', href: '#faq' },
+];
+---
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container container">
+    <a href="#" class="nav-logo">
+      <span class="logo-text">GODCORE AGENCY</span>
+      <span class="logo-dot">.</span>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      {navLinks.map((link) => (
+        <li><a href={link.href} class="nav-link">{link.label}</a></li>
+      ))}
+    </ul>
+
+    <a href="#contacto" class="btn btn-primary nav-cta">Contactar</a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  const navbar = document.getElementById('navbar');
+
+  toggle?.addEventListener('click', () => {
+    links?.classList.toggle('open');
+    toggle.classList.toggle('active');
+  });
+
+  // Close mobile menu on link click
+  links?.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle?.classList.remove('active');
+    });
+  });
+
+  // Navbar scroll effect
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 80) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+    lastScroll = currentScroll;
+  });
+</script>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: all var(--transition-base);
+  }
+
+  .navbar.scrolled {
+    background: rgba(22, 19, 22, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 14px 0;
+  }
+
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    z-index: 10;
+  }
+
+  .logo-text {
+    color: var(--color-heading);
+  }
+
+  .logo-dot {
+    color: var(--color-accent);
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .nav-link {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray);
+    transition: color var(--transition-fast);
+    font-weight: 400;
+  }
+
+  .nav-link:hover {
+    color: var(--color-white);
+  }
+
+  .nav-cta {
+    padding: 10px 24px;
+    font-size: var(--font-size-xs);
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 10;
+  }
+
+  .nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--color-white);
+    transition: all var(--transition-fast);
+    border-radius: 2px;
+  }
+
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(22, 19, 22, 0.97);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-base);
+    }
+
+    .nav-links.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-link {
+      font-size: var(--font-size-xl);
+      font-weight: 500;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+  }
+</style>
