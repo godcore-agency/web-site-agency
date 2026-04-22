@@ -28,6 +28,7 @@ const plans = [
     description:
       "Para marcas que buscan escalar con estrategia y presencia sólida.",
     featured: false,
+    badge: "Más Popular",
     features: [
       "Manejo de 2 redes mensual",
       "12 publicaciones al mes",
@@ -51,7 +52,7 @@ const plans = [
     description:
       "Para empresas que necesitan resultados agresivos y automatización.",
     featured: true,
-    badge: "Más Popular",
+    badge: "Recomendado",
     features: [
       "Manejo de 3 redes mensual",
       "18 publicaciones al mes",
@@ -119,6 +120,9 @@ const plans = [
     cta: "Hablar con ventas",
   },
 ];
+
+const mainPlans = plans.slice(0, 4);
+const customPlan = plans[4];
 ---
 
 <section class="pricing" id="planes">
@@ -133,11 +137,12 @@ const plans = [
       </p>
     </div>
 
+    <!-- 4 Main Plans -->
     <div class="pricing-grid">
       {
-        plans.map((plan, i) => (
+        mainPlans.map((plan, i) => (
           <div
-            class={`glass-card pricing-card ${plan.featured ? "featured" : ""} ${plan.name === "GODCORE" ? "godcore" : ""} animate-on-scroll delay-${(i % 3) + 1}`}
+            class={`glass-card pricing-card ${plan.featured ? "featured" : ""} ${plan.name === "GODCORE" ? "godcore" : ""} animate-on-scroll delay-${i + 1}`}
           >
             {plan.badge && (
               <div
@@ -182,6 +187,69 @@ const plans = [
         ))
       }
     </div>
+
+    <!-- Custom Plan (full-width) -->
+    <div class="custom-plan-wrapper animate-on-scroll">
+      <div class="glass-card custom-plan-card">
+        <div class="custom-plan-left">
+          <div class="custom-plan-header">
+            <h3 class="plan-name">{customPlan.name}</h3>
+            <div class="plan-price">
+              <span class="price">{customPlan.price}</span>
+            </div>
+            <p class="plan-desc">{customPlan.description}</p>
+          </div>
+          <a href="#contacto" class="btn btn-primary pricing-cta custom-cta">
+            {customPlan.cta}
+          </a>
+        </div>
+        <div class="custom-plan-right">
+          <ul class="plan-features custom-features">
+            {
+              customPlan.features.map((feature) => (
+                <li class="plan-feature">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M3.5 8.5L6.5 11.5L12.5 4.5"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="pricing-disclaimer animate-on-scroll">
+      <div class="disclaimer-icon">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="9" cy="9" r="8"></circle>
+          <line x1="9" y1="8" x2="9" y2="13"></line>
+          <circle cx="9" cy="5.5" r="0.5" fill="currentColor" stroke="none"
+          ></circle>
+        </svg>
+      </div>
+      <p>
+        <strong>Nota:</strong> Los gastos de infraestructura (hosting, dominios, herramientas
+        de terceros) y las inversiones en pauta publicitaria (Meta Ads, Google Ads,
+        etc.) corren por cuenta del cliente y no están incluidos en los planes.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -194,21 +262,16 @@ const plans = [
     margin-bottom: 64px;
   }
 
+  /* --- 4-column grid for main plans --- */
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    align-items: start;
-  }
-
-  /* Make the last two cards center on a new row */
-  .pricing-card:nth-child(4),
-  .pricing-card:nth-child(5) {
-    /* handled by the grid wrapper below */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    align-items: stretch;
   }
 
   .pricing-card {
-    padding: 36px 28px;
+    padding: 32px 24px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -260,13 +323,13 @@ const plans = [
 
   .pricing-badge {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    padding: 6px 14px;
+    top: 14px;
+    right: 14px;
+    padding: 5px 12px;
     border-radius: var(--radius-pill);
     background: var(--color-accent);
     color: var(--color-white);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -277,7 +340,7 @@ const plans = [
   }
 
   .pricing-card-header {
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
 
   .plan-name {
@@ -286,7 +349,7 @@ const plans = [
     color: var(--color-gray);
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .pricing-card.godcore .plan-name {
@@ -316,7 +379,7 @@ const plans = [
   }
 
   .plan-desc {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     color: var(--color-body);
     line-height: 1.6;
   }
@@ -324,15 +387,15 @@ const plans = [
   .plan-features {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 32px;
+    gap: 10px;
+    margin-bottom: 28px;
     flex: 1;
   }
 
   .plan-feature {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
     font-size: var(--font-size-xs);
     color: var(--color-body);
     line-height: 1.5;
@@ -363,71 +426,140 @@ const plans = [
     box-shadow: 0 8px 30px rgba(var(--color-accent-rgb), 0.35);
   }
 
-  @media (min-width: 1025px) {
-    .pricing-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    /* Center the last 2 cards */
-    .pricing-card:nth-child(4) {
-      grid-column: 1 / 2;
-      margin-left: auto;
-      margin-right: 0;
-      max-width: calc(100% - 10px);
-    }
-
-    .pricing-card:nth-child(5) {
-      grid-column: 2 / 3;
-      margin-left: 0;
-      margin-right: auto;
-      max-width: calc(100% - 10px);
-    }
-
-    /* Shift last row to center by using a 5-col trick */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 20px;
-    }
-
-    .pricing-card:nth-child(1) {
-      grid-column: 1 / 3;
-    }
-    .pricing-card:nth-child(2) {
-      grid-column: 3 / 5;
-    }
-    .pricing-card:nth-child(3) {
-      grid-column: 5 / 7;
-    }
-    .pricing-card:nth-child(4) {
-      grid-column: 2 / 4;
-      max-width: 100%;
-      margin: 0;
-    }
-    .pricing-card:nth-child(5) {
-      grid-column: 4 / 6;
-      max-width: 100%;
-      margin: 0;
-    }
+  /* --- Custom Plan (full-width) --- */
+  .custom-plan-wrapper {
+    margin-top: 20px;
   }
 
-  @media (max-width: 1024px) and (min-width: 641px) {
+  .custom-plan-card {
+    display: flex;
+    gap: 48px;
+    padding: 48px 48px;
+    align-items: center;
+    border-color: rgba(var(--color-accent-rgb), 0.12);
+  }
+
+  .custom-plan-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-accent),
+      rgba(255, 159, 41, 0.6),
+      transparent
+    );
+  }
+
+  .custom-plan-left {
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .custom-plan-left .plan-name {
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+  }
+
+  .custom-plan-left .price {
+    font-size: var(--font-size-2xl);
+  }
+
+  .custom-plan-left .plan-desc {
+    font-size: var(--font-size-sm);
+  }
+
+  .custom-cta {
+    width: auto;
+    max-width: 260px;
+  }
+
+  .custom-plan-right {
+    flex: 1;
+  }
+
+  .custom-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 32px;
+    margin-bottom: 0;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 1280px) {
     .pricing-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-
-    .pricing-card:nth-child(5) {
-      grid-column: 1 / -1;
-      max-width: 480px;
-      margin: 0 auto;
-    }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .pricing-grid {
       grid-template-columns: 1fr;
       max-width: 480px;
       margin: 0 auto;
     }
+
+    .custom-plan-card {
+      flex-direction: column;
+      gap: 32px;
+      padding: 32px 24px;
+      align-items: stretch;
+    }
+
+    .custom-plan-left {
+      flex: none;
+    }
+
+    .custom-cta {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .custom-features {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .custom-features {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* --- Disclaimer --- */
+  .pricing-disclaimer {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 48px;
+    padding: 20px 24px;
+    border-radius: var(--radius-card);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    max-width: auto;
+  }
+
+  .disclaimer-icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .pricing-disclaimer p {
+    font-size: var(--font-size-xs);
+    color: var(--color-gray);
+    line-height: 1.7;
+  }
+
+  .pricing-disclaimer strong {
+    color: var(--color-heading);
+    font-weight: 600;
   }
 </style>
